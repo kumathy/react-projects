@@ -1,5 +1,7 @@
+import TitleScreen from "./components/TitleScreen"
+
 export default function App() {
   return (
-    <h1>Quizzical</h1>
+    <TitleScreen></TitleScreen>
   )
 }
