@@ -1,24 +1,40 @@
 import { useState, useEffect } from "react"
+import { decode } from "he"
 
 export default function Quiz() {
     const [questions, setQuestions] = useState([])
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&category=31&difficulty=medium&type=multiple")
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error, status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(data => {
                 setQuestions(data.results);
+                // console.log(data.results);
             })
+            .catch(err => console.error("Fetch error:", err));
     }, [])
 
     const questionElements = questions.map((question, index) => {
+        // console.log(question.incorrect_answers);
+        // console.log(question.correct_answer);
+        const randomIndex = Math.floor(Math.random() * question.incorrect_answers.length + 1);
+        console.log(randomIndex);
+
+        const answers = [...question.incorrect_answers]; // copy
+        answers.splice(randomIndex, 0, question.correct_answer);
+
+        // console.log(answers);
         return (
             <section key={index}>
-                <h1>{question.question}</h1>
-                <button>Answer 1</button>
-                <button>Answer 2</button>
-                <button>Answer 3</button>
-                <button>Answer 4</button>
+                <h1>{decode(question.question)}</h1>
+                {answers.map(answer => (
+                    <button>{answer}</button>
+                ))}
                 <hr></hr>
             </section>
         )
