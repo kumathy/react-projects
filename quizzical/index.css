@@ -1,117 +1,117 @@
 /* 🛠 Global reset */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-    --color-bg: #F5F7FB;
-    --color-primary: #4D5B9E;
-    --color-text: #293264;
-    --color-border: #DBDEF0;
+  --color-bg: #f5f7fb;
+  --color-primary: #4d5b9e;
+  --color-text: #293264;
+  --color-border: #dbdef0;
 }
 
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    font-family: Inter, sans-serif;
-    background-color: var(--bg-main);
-    color: var(--color-text);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--color-text);
 }
 
 h1 {
-    font-family: Karla, sans-serif;
+  font-family: Karla, sans-serif;
 }
 
 button {
-    background-color: var(--color-primary);
-    color: var(--color-bg);
-    border: none;
-    font-family: Inter, sans-serif;
-    cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  font-family: Inter, sans-serif;
+  cursor: pointer;
 }
 
 hr {
-    border: 1px solid var(--color-border);
-    margin-block: 10px;
+  border: 1px solid var(--color-border);
+  margin-block: 10px;
 }
 
 .quizzical {
-    width: 580px;
-    height: 580px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
-    background-repeat: no-repeat;
-    background-position: right top, left bottom;
-    border: 10px solid #f2f2f2;
-    border-radius: 15px;
+  width: 580px;
+  height: 580px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
+  background-repeat: no-repeat;
+  background-position: right top, left bottom;
+  border: 10px solid #f2f2f2;
+  border-radius: 15px;
 }
 
 .title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title > h1 {
-    margin: 5px;
+  margin: 5px;
 }
 
 .title > p {
-    margin: 10px;
+  margin: 10px;
 }
 
 .title > button {
-    width: 193px;
-    height: 52px;
-    margin: 15px;
-    font-size: 1rem;
-    border-radius: 15px;
+  width: 193px;
+  height: 52px;
+  margin: 15px;
+  font-size: 1rem;
+  border-radius: 15px;
 }
 
 .quiz {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .quiz > section > h1 {
-    min-width: 400px;
-    margin-block: 5px;
-    font-size: 1rem;
+  min-width: 400px;
+  margin-block: 5px;
+  font-size: 1rem;
 }
 
 .quiz > section > div {
-    max-width: 700px;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
 }
 
 .quiz > section > div > button {
-    min-width: 66px;
-    min-height: 20px;
-    font-size: 0.64rem;
-    font-weight: 500;
-    border: 1px solid var(--color-primary);
-    border-radius: 6px;
-    background: none;
-    color: var(--color-text);
+  min-width: 66px;
+  min-height: 20px;
+  font-size: 0.64rem;
+  font-weight: 500;
+  border: 1px solid var(--color-primary);
+  border-radius: 6px;
+  background: none;
+  color: var(--color-text);
 }
 
 .quiz > button {
-    width: 120px;
-    height: 35px;
-    margin: 15px;
-    font-size: 0.64rem;
-    border-radius: 10px;
+  width: 120px;
+  height: 35px;
+  margin: 15px;
+  font-size: 0.64rem;
+  border-radius: 10px;
 }

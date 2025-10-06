@@ -1,13 +1,17 @@
-import { useState } from "react"
-import Title from "./components/Title"
-import Quiz from "./components/Quiz"
+import { useState } from "react";
+import Title from "./components/Title";
+import Quiz from "./components/Quiz";
 
 export default function App() {
   const [isQuizStarted, setIsQuizStarted] = useState(false);
 
   return (
     <main className="quizzical">
-      {isQuizStarted ? <Quiz isQuizStarted={isQuizStarted} /> : <Title setIsQuizStarted={setIsQuizStarted}></Title>}
+      {isQuizStarted ? (
+        <Quiz isQuizStarted={isQuizStarted} />
+      ) : (
+        <Title setIsQuizStarted={setIsQuizStarted}></Title>
+      )}
     </main>
-  )
+  );
 }

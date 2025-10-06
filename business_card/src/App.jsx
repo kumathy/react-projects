@@ -1,5 +1,5 @@
-import Main from "./components/Main"
-import Footer from "./components/Footer"
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -9,5 +9,5 @@ export default function App() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }

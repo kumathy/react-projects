@@ -1,46 +1,46 @@
 /* 🎨 Color & spacing variables */
 :root {
-  --bg-main: #23252C;
-  --bg-card: #1A1B21;
+  --bg-main: #23252c;
+  --bg-card: #1a1b21;
   --bg-footer: #161619;
-  --accent: #5093E2;
-  --accent-hover: #04669A;
+  --accent: #5093e2;
+  --accent-hover: #04669a;
   --hover: #cdcdcd;
-  --text-light: #F5F5F5;
-  --text-muted: #918E9B;
-  --text-accent: #F3BF99;
+  --text-light: #f5f5f5;
+  --text-muted: #918e9b;
+  --text-accent: #f3bf99;
   --radius: 12px;
   --spacing: 20px;
 }
 
 /* 🛠 Global reset */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Inter, sans-serif;
-    background-color: var(--bg-main);
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background-color: var(--bg-main);
+  color: white;
 }
 
 /* 🎯 Buttons */
 button {
-    width: 115px;
-    height: 34px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: background-color 0.5s ease, transform 0.1s ease;
+  width: 115px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: background-color 0.5s ease, transform 0.1s ease;
 }
 
 button i {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 button:hover {
@@ -49,43 +49,43 @@ button:hover {
 
 /* 📇 Business card container */
 .business-card {
-    border-radius: var(--radius);
-    overflow: hidden;
-    width: min(317px, 90vw);
-    text-align: center;
-    background-color: var(--bg-card);
-    margin: var(--spacing);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: min(317px, 90vw);
+  text-align: center;
+  background-color: var(--bg-card);
+  margin: var(--spacing);
 }
 
 .logo {
-    width: 100%;
+  width: 100%;
 }
 
 .info {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .title > h1 {
-    margin-bottom: 0;
-    font-size: 25px;
+  margin-bottom: 0;
+  font-size: 25px;
 }
 
 .title > h2 {
-    margin-top: 0;
-    font-size: 12.8px;
-    font-weight: normal;
-    color: var(--text-accent);
+  margin-top: 0;
+  font-size: 12.8px;
+  font-weight: normal;
+  color: var(--text-accent);
 }
 
 .title > h3 {
-    font-size: 10.24px;
-    font-weight: normal;
-    color: var(--text-light);
+  font-size: 10.24px;
+  font-weight: normal;
+  color: var(--text-light);
 }
 
 /* 🔗 Buttons row */
 .btn-email {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 .btn-email:hover {
@@ -93,41 +93,40 @@ button:hover {
 }
 
 .btn-linkedin {
-    color: white;
-    background-color: var(--accent);
+  color: white;
+  background-color: var(--accent);
 }
 
 .btn-linkedin:hover {
-    background-color: var(--accent-hover);
+  background-color: var(--accent-hover);
 }
 
 .info-detail {
-    display: block;
-    font-size: 10.25px;
-    padding: 0 35px;
-    text-align: left;
+  display: block;
+  font-size: 10.25px;
+  padding: 0 35px;
+  text-align: left;
 }
 
 .info-detail > h4 {
-    font-size: 16px;
-    margin-bottom: 5px;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
 .info-detail > p {
-    margin: 0;
+  margin: 0;
 }
-
 
 /* 📌 Footer */
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 64px;
-    gap: 10px;
-    background-color: var(--bg-footer);
-    color: var(--text-muted);
-    font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  gap: 10px;
+  background-color: var(--bg-footer);
+  color: var(--text-muted);
+  font-size: 25px;
 }
 
 .footer > i {
