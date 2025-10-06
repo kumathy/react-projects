@@ -3,6 +3,13 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-bg: #F5F7FB;
+    --color-primary: #4D5B9E;
+    --color-text: #293264;
+    --color-border: #DBDEF0;
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -11,7 +18,7 @@ body {
     margin: 0;
     font-family: Inter, sans-serif;
     background-color: var(--bg-main);
-    color: #293264;
+    color: var(--color-text);
 }
 
 h1 {
@@ -19,26 +26,26 @@ h1 {
 }
 
 button {
-    background-color: #4D5B9E;
-    color: #F5F7FB;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
     border: none;
     font-family: Inter, sans-serif;
     cursor: pointer;
 }
 
 hr {
-    border: 1px solid #DBDEF0;
+    border: 1px solid var(--color-border);
     margin-block: 10px;
 }
 
 .quizzical {
-    width: 600px;
-    height: 600px;
+    width: 580px;
+    height: 580px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F5F7FB;
-    color: #293264;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
     background-repeat: no-repeat;
     background-position: right top, left bottom;
@@ -99,10 +106,10 @@ hr {
     min-height: 20px;
     font-size: 0.64rem;
     font-weight: 500;
-    border: 1px solid #4D5B9E;
+    border: 1px solid var(--color-primary);
     border-radius: 6px;
     background: none;
-    color: #293264;
+    color: var(--color-text);
 }
 
 .quiz > button {
