@@ -5,7 +5,7 @@ export default function Title(props) {
     }
 
     return (
-        <main className="quizzical title">
+        <main className="title">
             <h1>Quizzical</h1>
             <p>Put your trivia knowledge to the test!</p>
             <button onClick={startQuiz}>Start quiz</button>

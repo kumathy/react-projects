@@ -6,6 +6,8 @@ export default function App() {
   const [isQuizStarted, setIsQuizStarted] = useState(false);
 
   return (
-    isQuizStarted ? <Quiz /> : <Title setIsQuizStarted={setIsQuizStarted}></Title>
+    <main className="quizzical">
+      {isQuizStarted ? <Quiz /> : <Title setIsQuizStarted={setIsQuizStarted}></Title>}
+    </main>
   )
 }
