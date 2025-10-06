@@ -7,7 +7,7 @@ export default function App() {
 
   return (
     <main className="quizzical">
-      {isQuizStarted ? <Quiz /> : <Title setIsQuizStarted={setIsQuizStarted}></Title>}
+      {isQuizStarted ? <Quiz isQuizStarted={isQuizStarted} /> : <Title setIsQuizStarted={setIsQuizStarted}></Title>}
     </main>
   )
 }
