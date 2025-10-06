@@ -5,7 +5,7 @@ export default function Quiz() {
     const [questions, setQuestions] = useState([])
 
     useEffect(() => {
-        fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple")
+        fetch("https://opentdb.com/api.php?amount=5&category=31&difficulty=easy&type=multiple")
             .then(res => {
                 if (!res.ok) {
                     throw new Error(`HTTP error, status: ${res.status}`);

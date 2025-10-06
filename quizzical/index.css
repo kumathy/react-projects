@@ -39,7 +39,7 @@ hr {
     align-items: center;
     background-color: #F5F7FB;
     color: #293264;
-    background-image: url(/public/blobs.svg), url(/public/blobs_2.svg);
+    background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
     background-repeat: no-repeat;
     background-position: right top, left bottom;
     border: 10px solid #f2f2f2;
