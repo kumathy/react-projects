@@ -33,11 +33,29 @@ export default function Quiz(props) {
     }
   }, [props.isQuizStarted]);
 
-  function selectAnswer(index) {
-    // TODO ✅
+  function selectAnswer(questionIndex, answerIndex) {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((question, index) => {
+        console.log("This is section: ", index);
+        console.log(
+          "question.selectecAnswerIndex: ",
+          question.selectedAnswerIndex
+        );
+        console.log("questionIndex :", questionIndex);
+        console.log("answerIndex: ", answerIndex);
+
+        if (index === questionIndex) {
+          return {
+            ...question,
+            selectedAnswerIndex: answerIndex,
+          };
+        }
+        return question;
+      })
+    );
   }
 
-  const questionElements = questions.map((question, index) => {
+  const questionElements = questions.map((question, questionIndex) => {
     const randomIndex = Math.floor(
       Math.random() * question.incorrect_answers.length + 1
     );
@@ -45,17 +63,20 @@ export default function Quiz(props) {
     const answers = [...question.incorrect_answers]; // spread to copy
     answers.splice(randomIndex, 0, question.correct_answer);
 
-    const buttonClassName = clsx("answer");
+    const buttonClassName = clsx(
+      "answer"
+      // question.selectedAnswerIndex === -1 && "selected"
+    );
 
     return (
-      <section key={index}>
+      <section key={questionIndex}>
         <h1>{decode(question.question)}</h1>
         <div>
-          {answers.map((answer, index) => (
+          {answers.map((answer, answerIndex) => (
             <button
               className={buttonClassName}
-              key={index}
-              onClick={() => selectAnswer(index)}
+              key={answerIndex}
+              onClick={() => selectAnswer(questionIndex, answerIndex)}
             >
               {decode(answer)}
             </button>
