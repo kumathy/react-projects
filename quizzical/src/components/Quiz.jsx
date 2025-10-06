@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { decode } from "he";
+import { clsx } from "clsx";
 
 export default function Quiz(props) {
     const [questions, setQuestions] = useState([]);
@@ -28,19 +29,24 @@ export default function Quiz(props) {
         }
     }, [props.isQuizStarted])
 
+    function selectAnswer(index) {
+        // TODO ✅
+    }
+
     const questionElements = questions.map((question, index) => {
         const randomIndex = Math.floor(Math.random() * question.incorrect_answers.length + 1);
 
         const answers = [...question.incorrect_answers]; // spread to copy
         answers.splice(randomIndex, 0, question.correct_answer);
 
-        // console.log(answers);
+        const buttonClassName = clsx("answer");
+
         return (
             <section key={index}>
                 <h1>{decode(question.question)}</h1>
                 <div>
-                    {answers.map(answer => (
-                        <button key={answer}>{decode(answer)}</button>
+                    {answers.map((answer, index) => (
+                        <button className={buttonClassName} key={index} onClick={() => selectAnswer(index)}>{decode(answer)}</button>
                     ))}
                 </div>
                 <hr></hr>
