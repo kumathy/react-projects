@@ -48,14 +48,6 @@ export default function Quiz(props) {
   function selectAnswer(questionIndex, answerIndex) {
     setQuestions((prevQuestions) =>
       prevQuestions.map((question, index) => {
-        // console.log("This is section: ", index);
-        // console.log(
-        //   "question.selectedAnswerIndex: ",
-        //   question.selectedAnswerIndex
-        // );
-        // console.log("questionIndex :", questionIndex);
-        // console.log("answerIndex: ", answerIndex);
-
         if (index === questionIndex) {
           return {
             ...question,

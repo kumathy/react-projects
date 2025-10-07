@@ -17,12 +17,26 @@ body {
   align-items: center;
   margin: 0;
   font-family: Inter, sans-serif;
-  background-color: var(--bg-main);
   color: var(--color-text);
+  background-image: linear-gradient(
+    111.5deg,
+    rgba(228, 247, 255, 1) 21.9%,
+    rgba(255, 216, 194, 1) 92.2%
+  );
 }
 
 h1 {
   font-family: Karla, sans-serif;
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+hr {
+  border: 1px solid var(--color-border);
+  margin-block: 10px;
 }
 
 button {
@@ -31,6 +45,12 @@ button {
   border: none;
   font-family: Inter, sans-serif;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 button:disabled {
@@ -38,23 +58,20 @@ button:disabled {
   opacity: 0.5;
 }
 
-hr {
-  border: 1px solid var(--color-border);
-  margin-block: 10px;
-}
-
 .quizzical {
-  width: 580px;
-  height: 580px;
+  width: 870px;
+  height: 870px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: var(--color-bg);
   color: var(--color-text);
   background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
   background-repeat: no-repeat;
   background-position: right top, left bottom;
-  border: 10px solid #f2f2f2;
+
+  border: 10px solid #ebebeb;
   border-radius: 15px;
 }
 
@@ -66,23 +83,23 @@ hr {
 }
 
 .title > h1 {
-  margin: 5px;
-}
-
-.title > p {
   margin: 10px;
 }
 
-.title > button {
-  width: 193px;
-  height: 52px;
+.title > p {
   margin: 15px;
-  font-size: 1rem;
-  border-radius: 15px;
+}
+
+.title > button {
+  width: 250px;
+  height: 70px;
+  margin: 30px;
+  font-size: 1.3rem;
+  border-radius: 20px;
 }
 
 .quiz {
-  width: 400px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,27 +107,33 @@ hr {
 }
 
 .quiz > section > h1 {
-  min-width: 400px;
-  margin-block: 5px;
-  font-size: 1rem;
+  min-width: 600px;
+  margin-block: 8px;
+  font-size: 1.3rem;
 }
 
 .quiz > section > div {
-  max-width: 700px;
+  max-width: 1050px;
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 18px;
 }
 
 .quiz > section > div > button.answer {
-  min-width: 66px;
-  min-height: 20px;
-  font-size: 0.64rem;
-  font-weight: 500;
-  border: 1px solid var(--color-primary);
-  border-radius: 6px;
+  min-width: 99px;
+  min-height: 35px;
+  padding: 0 12px;
+  font-size: 1rem;
+  font-weight: 400;
+
+  border: 2px solid var(--color-primary);
+  border-radius: 9px;
   background: none;
   color: var(--color-text);
+}
+
+.quiz > section > div > button.answer:hover {
+  background: #e9ecff;
 }
 
 .quiz > section > div > button.answer.selected {
@@ -130,20 +153,19 @@ hr {
 
 .quiz > footer {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
 .quiz > footer > p {
-  font-size: 0.8rem;
   font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .quiz > footer > button {
-  width: 120px;
-  height: 35px;
+  width: 180px;
+  height: 52px;
   margin: 15px;
-  font-size: 0.64rem;
+  font-size: 1.2rem;
   border-radius: 10px;
 }
