@@ -3,13 +3,26 @@ import { decode } from "he";
 import { clsx } from "clsx";
 
 export default function Quiz(props) {
+  const NUMBER_OF_QUESTIONS = 5;
   const [questions, setQuestions] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
+
+  function getApi() {
+    const category = props.custom.category
+      ? `&category=${props.custom.category}`
+      : "";
+    const difficulty = props.custom.difficulty
+      ? `&difficulty=${props.custom.difficulty}`
+      : "";
+    return `https://opentdb.com/api.php?amount=${NUMBER_OF_QUESTIONS}${category}${difficulty}&type=multiple`;
+  }
+
+  console.log(getApi());
 
   useEffect(() => {
     // Fetch API
     if (props.isQuizStarted) {
-      fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+      fetch(getApi())
         .then((res) => {
           if (!res.ok) {
             throw new Error(`HTTP error, status: ${res.status}`);

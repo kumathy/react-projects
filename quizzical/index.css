@@ -19,7 +19,7 @@ body {
   font-family: Inter, sans-serif;
   color: var(--color-text);
   background-color: #ffffff;
-  background-image: radial-gradient(#4d5b9e 1.9px, #ffffff 1.9px);
+  background-image: radial-gradient(#4d5b9e 2px, #ffffff 2px);
   background-size: 40px 40px;
   animation: backgroundmovement 3s linear infinite;
 }
@@ -67,6 +67,21 @@ button:disabled {
   opacity: 0.5;
 }
 
+select {
+  width: 200px;
+  height: 50px;
+  font-family: Inter, sans-serif;
+  text-align: center;
+  -webkit-appearance: none; /* For Safari, Chrome, Opera */
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* Standard property */
+
+  border: 2px solid var(--color-primary);
+  border-radius: 9px;
+  background: none;
+  color: var(--color-text);
+}
+
 .quizzical {
   width: 870px;
   height: 870px;
@@ -105,28 +120,6 @@ button:disabled {
   align-items: center;
   justify-content: center;
   gap: 15px;
-}
-
-/* .title > .category-select {
-  position: relative;
-  width: 200px;
-  height: 50px;
-} */
-
-/* The container must be positioned relative: */
-select {
-  width: 200px;
-  height: 50px;
-  font-family: Inter, sans-serif;
-  text-align: center;
-  -webkit-appearance: none; /* For Safari, Chrome, Opera */
-  -moz-appearance: none; /* For Firefox */
-  appearance: none; /* Standard property */
-
-  border: 2px solid var(--color-primary);
-  border-radius: 9px;
-  background: none;
-  color: var(--color-text);
 }
 
 .title > button {

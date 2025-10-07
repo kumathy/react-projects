@@ -4,6 +4,7 @@ import Quiz from "./components/Quiz";
 
 export default function App() {
   const [isQuizStarted, setIsQuizStarted] = useState(false);
+  const [custom, setCustom] = useState({});
 
   return (
     <main className="quizzical">
@@ -11,9 +12,14 @@ export default function App() {
         <Quiz
           isQuizStarted={isQuizStarted}
           setIsQuizStarted={setIsQuizStarted}
+          custom={custom}
         />
       ) : (
-        <Title setIsQuizStarted={setIsQuizStarted}></Title>
+        <Title
+          setIsQuizStarted={setIsQuizStarted}
+          custom={custom}
+          setCustom={setCustom}
+        ></Title>
       )}
     </main>
   );
