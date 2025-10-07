@@ -18,11 +18,20 @@ body {
   margin: 0;
   font-family: Inter, sans-serif;
   color: var(--color-text);
-  background-image: linear-gradient(
-    111.5deg,
-    rgba(228, 247, 255, 1) 21.9%,
-    rgba(255, 216, 194, 1) 92.2%
-  );
+  background-color: #ffffff;
+  background-image: radial-gradient(#4d5b9e 1.9px, #ffffff 1.9px);
+  background-size: 40px 40px;
+  animation: backgroundmovement 3s linear infinite;
+}
+
+/* seamless movement */
+@keyframes backgroundmovement {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px; /* same as background-size */
+  }
 }
 
 h1 {
@@ -88,6 +97,36 @@ button:disabled {
 
 .title > p {
   margin: 15px;
+}
+
+.title > section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* .title > .category-select {
+  position: relative;
+  width: 200px;
+  height: 50px;
+} */
+
+/* The container must be positioned relative: */
+select {
+  width: 200px;
+  height: 50px;
+  font-family: Inter, sans-serif;
+  text-align: center;
+  -webkit-appearance: none; /* For Safari, Chrome, Opera */
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* Standard property */
+
+  border: 2px solid var(--color-primary);
+  border-radius: 9px;
+  background: none;
+  color: var(--color-text);
 }
 
 .title > button {
