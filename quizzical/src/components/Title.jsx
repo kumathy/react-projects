@@ -17,8 +17,6 @@ export default function Title(props) {
     }));
   }
 
-  console.log(props.custom);
-
   return (
     <main className="title">
       <h1>Quizzical</h1>
