@@ -18,31 +18,39 @@ export default function Quiz(props) {
           return res.json();
         })
         .then((data) => {
-          setQuestions(data.results);
+          /// Initiate selectedAnswerIndex key to each question
+          const updatedQuestions = data.results.map((question) => {
+            // Spread to copy incorrect answers
+            const allAnswers = [...question.incorrect_answers];
+            // Pick random index for correct answer
+            const randomIndex = Math.floor(
+              Math.random() * (allAnswers.length + 1)
+            );
+            // Insert correct answer randomly
+            allAnswers.splice(randomIndex, 0, question.correct_answer);
+
+            return {
+              ...question,
+              allAnswers,
+              selectedAnswerIndex: -1, // -1 === not selected yet
+            };
+          });
+          setQuestions(updatedQuestions);
         })
         .catch((err) => console.error("Fetch error:", err));
-
-      // Initiate selectedAnswerIndex key to each question
-      setQuestions(
-        (prevQuestions) =>
-          prevQuestions.map((question) => ({
-            ...question,
-            selectedAnswerIndex: -1,
-          })) // -1 === not selected yet
-      );
     }
   }, [props.isQuizStarted]);
 
   function selectAnswer(questionIndex, answerIndex) {
     setQuestions((prevQuestions) =>
       prevQuestions.map((question, index) => {
-        console.log("This is section: ", index);
-        console.log(
-          "question.selectecAnswerIndex: ",
-          question.selectedAnswerIndex
-        );
-        console.log("questionIndex :", questionIndex);
-        console.log("answerIndex: ", answerIndex);
+        // console.log("This is section: ", index);
+        // console.log(
+        //   "question.selectedAnswerIndex: ",
+        //   question.selectedAnswerIndex
+        // );
+        // console.log("questionIndex :", questionIndex);
+        // console.log("answerIndex: ", answerIndex);
 
         if (index === questionIndex) {
           return {
@@ -56,31 +64,25 @@ export default function Quiz(props) {
   }
 
   const questionElements = questions.map((question, questionIndex) => {
-    const randomIndex = Math.floor(
-      Math.random() * question.incorrect_answers.length + 1
-    );
-
-    const answers = [...question.incorrect_answers]; // spread to copy
-    answers.splice(randomIndex, 0, question.correct_answer);
-
-    const buttonClassName = clsx(
-      "answer"
-      // question.selectedAnswerIndex === -1 && "selected"
-    );
-
     return (
       <section key={questionIndex}>
         <h1>{decode(question.question)}</h1>
         <div>
-          {answers.map((answer, answerIndex) => (
-            <button
-              className={buttonClassName}
-              key={answerIndex}
-              onClick={() => selectAnswer(questionIndex, answerIndex)}
-            >
-              {decode(answer)}
-            </button>
-          ))}
+          {question.allAnswers.map((answer, answerIndex) => {
+            const buttonClassName = clsx(
+              "answer",
+              question.selectedAnswerIndex === answerIndex && "selected"
+            );
+            return (
+              <button
+                className={buttonClassName}
+                key={answerIndex}
+                onClick={() => selectAnswer(questionIndex, answerIndex)}
+              >
+                {decode(answer)}
+              </button>
+            );
+          })}
         </div>
         <hr></hr>
       </section>
