@@ -9,9 +9,7 @@ export default function Quiz(props) {
   useEffect(() => {
     // Fetch API
     if (props.isQuizStarted) {
-      fetch(
-        "https://opentdb.com/api.php?amount=5&category=31&difficulty=easy&type=multiple"
-      )
+      fetch("https://opentdb.com/api.php?amount=5&type=multiple")
         .then((res) => {
           if (!res.ok) {
             throw new Error(`HTTP error, status: ${res.status}`);
