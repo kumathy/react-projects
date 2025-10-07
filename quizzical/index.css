@@ -11,17 +11,19 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
   font-family: Inter, sans-serif;
   color: var(--color-text);
   background-color: #ffffff;
   background-image: radial-gradient(#4d5b9e 2px, #ffffff 2px);
   background-size: 40px 40px;
   animation: backgroundmovement 3s linear infinite;
+  /* overflow: hidden; prevents scrolling on mobile */
 }
 
 /* seamless movement */
@@ -48,6 +50,7 @@ hr {
   margin-block: 10px;
 }
 
+/* 🔘 Buttons & Selects */
 button,
 select {
   font-family: Inter, sans-serif;
@@ -71,6 +74,7 @@ button:disabled {
   opacity: 0.5;
 }
 
+/* 🧭 Select dropdowns */
 select {
   width: 200px;
   height: 50px;
@@ -95,11 +99,15 @@ select:hover {
   transform: scale(1.02);
 }
 
+/* 🎯 Main container */
 .quizzical {
-  width: 870px;
-  height: 870px;
+  width: min(90vw, 870px);
+  min-height: 70vmin;
+  max-height: 90vh;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start; /* for quiz mode */
   align-items: center;
 
   background-color: var(--color-bg);
@@ -107,11 +115,36 @@ select:hover {
   background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
   background-repeat: no-repeat;
   background-position: right top, left bottom;
+  background-size: 35% auto;
 
   border: 10px solid #ebebeb;
   border-radius: 15px;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-bg);
 }
 
+/* Optional smooth scrollbar styling */
+.quizzical::-webkit-scrollbar {
+  width: 8px;
+}
+.quizzical::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 10px;
+}
+.quizzical::-webkit-scrollbar-track {
+  background-color: var(--color-bg);
+}
+
+/* Center everything on title screen only */
+.quizzical.title-screen {
+  justify-content: center;
+}
+
+/* 🏠 Title screen */
 .title {
   display: flex;
   flex-direction: column;
@@ -121,10 +154,13 @@ select:hover {
 
 .title > h1 {
   margin: 10px;
+  font-size: clamp(2rem, 4vw, 2.5rem);
 }
 
 .title > p {
   margin: 15px;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
 }
 
 .title > section {
@@ -132,43 +168,55 @@ select:hover {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
 .title > button {
-  width: 250px;
-  height: 70px;
+  width: clamp(180px, 20vw, 250px);
+  height: clamp(55px, 7vh, 70px);
   margin: 30px;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   border-radius: 20px;
 }
 
+/* 🧩 Quiz section */
 .quiz {
-  width: 600px;
+  width: 90%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+/* each question block */
+.quiz > section {
+  width: 100%; /* ensures all sections take full quiz width */
+}
+
 .quiz > section > h1 {
-  min-width: 600px;
+  width: 100%;
   margin-block: 8px;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  text-align: center;
 }
 
 .quiz > section > div {
-  max-width: 1050px;
   display: flex;
-  flex-direction: row;
-  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
+/* 🧠 Answer buttons */
 .quiz > section > div > button.answer {
-  min-width: 99px;
+  flex: 1 1 auto;
+  min-width: 90px;
   min-height: 35px;
-  padding: 0 12px;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   font-weight: 400;
 
   border: 2px solid var(--color-primary);
@@ -196,21 +244,47 @@ select:hover {
   border: none;
 }
 
+/* 🧾 Footer */
 .quiz > footer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
 .quiz > footer > p {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin: 10px 0;
+  text-align: center;
 }
 
 .quiz > footer > button {
-  width: 180px;
-  height: 52px;
-  margin: 15px;
-  font-size: 1.2rem;
+  width: clamp(150px, 20vw, 180px);
+  height: clamp(45px, 6vh, 52px);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   border-radius: 10px;
+  margin: 10px;
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto; /* allow scroll on smaller screens if needed */
+  }
+
+  .quizzical {
+    width: 90vw;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .quiz > section > div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .title > section {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

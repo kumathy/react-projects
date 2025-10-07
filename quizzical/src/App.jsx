@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { clsx } from "clsx";
 import Title from "./components/Title";
 import Quiz from "./components/Quiz";
 
@@ -7,7 +8,7 @@ export default function App() {
   const [custom, setCustom] = useState({});
 
   return (
-    <main className="quizzical">
+    <main className={clsx("quizzical", isQuizStarted ? "" : "title-screen")}>
       {isQuizStarted ? (
         <Quiz
           isQuizStarted={isQuizStarted}
@@ -17,7 +18,6 @@ export default function App() {
       ) : (
         <Title
           setIsQuizStarted={setIsQuizStarted}
-          custom={custom}
           setCustom={setCustom}
         ></Title>
       )}
