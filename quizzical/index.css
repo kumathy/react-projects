@@ -128,7 +128,19 @@ hr {
   border: none;
 }
 
-.quiz > button {
+.quiz > footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz > footer > p {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.quiz > footer > button {
   width: 120px;
   height: 35px;
   margin: 15px;

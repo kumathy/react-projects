@@ -42,6 +42,7 @@ export default function Quiz(props) {
     }
   }, [props.isQuizStarted]);
 
+  // DEBUG
   console.log(questions);
 
   function selectAnswer(questionIndex, answerIndex) {
@@ -70,7 +71,21 @@ export default function Quiz(props) {
     setIsGameOver(true);
   }
 
-  console.log(isGameOver);
+  function getNumberOfCorrectAnswers() {
+    let numberOfCorrectAnswers = 0;
+
+    questions.forEach((question, questionIndex) => {
+      const hasAnswered = question.selectedAnswerIndex !== -1;
+      const isCorrect =
+        question.allAnswers[question.selectedAnswerIndex] ===
+        question.correct_answer;
+      if (hasAnswered && isCorrect) {
+        numberOfCorrectAnswers++;
+      }
+    });
+
+    return numberOfCorrectAnswers;
+  }
 
   const questionElements = questions.map((question, questionIndex) => {
     return (
@@ -110,7 +125,15 @@ export default function Quiz(props) {
     questions.length !== 0 && (
       <section className="quiz">
         {questionElements}
-        <button onClick={finishGame}>Check answers</button>
+        <footer>
+          {isGameOver && (
+            <p>
+              You scored {getNumberOfCorrectAnswers()}/{questions.length}{" "}
+              correct answers
+            </p>
+          )}
+          <button onClick={finishGame}>Check answers</button>
+        </footer>
       </section>
     )
   );
