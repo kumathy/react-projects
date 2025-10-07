@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 
 export default function Quiz(props) {
   const [questions, setQuestions] = useState([]);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     // Fetch API
@@ -41,6 +42,8 @@ export default function Quiz(props) {
     }
   }, [props.isQuizStarted]);
 
+  console.log(questions);
+
   function selectAnswer(questionIndex, answerIndex) {
     setQuestions((prevQuestions) =>
       prevQuestions.map((question, index) => {
@@ -63,6 +66,12 @@ export default function Quiz(props) {
     );
   }
 
+  function finishGame() {
+    setIsGameOver(true);
+  }
+
+  console.log(isGameOver);
+
   const questionElements = questions.map((question, questionIndex) => {
     return (
       <section key={questionIndex}>
@@ -71,13 +80,21 @@ export default function Quiz(props) {
           {question.allAnswers.map((answer, answerIndex) => {
             const buttonClassName = clsx(
               "answer",
-              question.selectedAnswerIndex === answerIndex && "selected"
+              answerIndex === question.selectedAnswerIndex && "selected",
+              isGameOver && answer === question.correct_answer && "correct",
+              isGameOver &&
+                answerIndex === question.selectedAnswerIndex &&
+                answer !== question.correct_answer &&
+                "incorrect"
             );
             return (
               <button
                 className={buttonClassName}
                 key={answerIndex}
                 onClick={() => selectAnswer(questionIndex, answerIndex)}
+                disabled={
+                  isGameOver && answerIndex !== question.selectedAnswerIndex
+                }
               >
                 {decode(answer)}
               </button>
@@ -90,9 +107,11 @@ export default function Quiz(props) {
   });
 
   return (
-    <section className="quiz">
-      {questionElements}
-      {questions.length !== 0 && <button>Check answers</button>}
-    </section>
+    questions.length !== 0 && (
+      <section className="quiz">
+        {questionElements}
+        <button onClick={finishGame}>Check answers</button>
+      </section>
+    )
   );
 }
