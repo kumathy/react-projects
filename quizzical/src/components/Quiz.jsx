@@ -71,6 +71,10 @@ export default function Quiz(props) {
     setIsGameOver(true);
   }
 
+  function newGame() {
+    props.setIsQuizStarted(false);
+  }
+
   function getNumberOfCorrectAnswers() {
     let numberOfCorrectAnswers = 0;
 
@@ -132,7 +136,9 @@ export default function Quiz(props) {
               correct answers
             </p>
           )}
-          <button onClick={finishGame}>Check answers</button>
+          <button onClick={isGameOver ? newGame : finishGame}>
+            {isGameOver ? "New game" : "Check answers"}
+          </button>
         </footer>
       </section>
     )

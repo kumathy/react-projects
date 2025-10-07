@@ -8,7 +8,10 @@ export default function App() {
   return (
     <main className="quizzical">
       {isQuizStarted ? (
-        <Quiz isQuizStarted={isQuizStarted} />
+        <Quiz
+          isQuizStarted={isQuizStarted}
+          setIsQuizStarted={setIsQuizStarted}
+        />
       ) : (
         <Title setIsQuizStarted={setIsQuizStarted}></Title>
       )}
