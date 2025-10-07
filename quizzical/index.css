@@ -48,13 +48,17 @@ hr {
   margin-block: 10px;
 }
 
+button,
+select {
+  font-family: Inter, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 button {
   background-color: var(--color-primary);
   color: var(--color-bg);
   border: none;
-  font-family: Inter, sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 button:hover:not(:disabled) {
@@ -70,16 +74,25 @@ button:disabled {
 select {
   width: 200px;
   height: 50px;
-  font-family: Inter, sans-serif;
   text-align: center;
-  -webkit-appearance: none; /* For Safari, Chrome, Opera */
-  -moz-appearance: none; /* For Firefox */
-  appearance: none; /* Standard property */
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
   border: 2px solid var(--color-primary);
   border-radius: 9px;
   background: none;
   color: var(--color-text);
+
+  outline: none;
+  box-shadow: none;
+}
+
+select:hover {
+  background: #e9ecff;
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 .quizzical {
