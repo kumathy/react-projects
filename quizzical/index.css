@@ -101,10 +101,8 @@ select:hover {
 
 /* 🎯 Main container */
 .quizzical {
-  width: min(90vw, 870px);
-  min-height: 70vmin;
-  max-height: 90vh;
-
+  width: min(90vw, 90vh, 870px);
+  height: min(90vw, 870px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* for quiz mode */
@@ -184,6 +182,11 @@ select:hover {
 .quiz {
   width: 90%;
   max-width: 600px;
+
+  /* Centers quiz */
+  margin-top: auto;
+  margin-bottom: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
