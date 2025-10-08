@@ -22,7 +22,7 @@ export default function Title(props) {
       <h1>Quizzical</h1>
       <p>Put your trivia knowledge to the test!</p>
       <section>
-        <select onChange={selectCategory}>
+        <select value={props.custom.category} onChange={selectCategory}>
           <option value="">Any Category</option>
           <option value="9">General</option>
           <option value="10">Books</option>
@@ -50,7 +50,7 @@ export default function Title(props) {
           <option value="32">Cartoon</option>
         </select>
 
-        <select onChange={selectDifficulty}>
+        <select value={props.custom.difficulty} onChange={selectDifficulty}>
           <option value="">Any Difficulty</option>
           <option value="easy">Easy</option>
           <option value="medium"> Medium</option>

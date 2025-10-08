@@ -6,7 +6,10 @@ import Quiz from "./components/Quiz";
 
 export default function App() {
   const [isQuizStarted, setIsQuizStarted] = useState(false);
-  const [custom, setCustom] = useState({});
+  const [custom, setCustom] = useState({
+    category: "",
+    difficulty: "",
+  });
 
   return (
     <main>
@@ -20,6 +23,7 @@ export default function App() {
         ) : (
           <Title
             setIsQuizStarted={setIsQuizStarted}
+            custom={custom}
             setCustom={setCustom}
           ></Title>
         )}
