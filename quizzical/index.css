@@ -144,6 +144,23 @@ select:hover {
   justify-content: center;
 }
 
+.quizzical-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.github-link {
+  text-decoration: none;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* 🏠 Title screen */
 .title {
   display: flex;
