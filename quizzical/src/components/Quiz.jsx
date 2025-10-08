@@ -6,6 +6,7 @@ export default function Quiz(props) {
   const NUMBER_OF_QUESTIONS = 5;
   const [questions, setQuestions] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [error, setError] = useState("");
 
   function getApi() {
     const category = props.custom.category
@@ -17,17 +18,23 @@ export default function Quiz(props) {
     return `https://opentdb.com/api.php?amount=${NUMBER_OF_QUESTIONS}${category}${difficulty}&type=multiple`;
   }
 
-  console.log(getApi());
-
   useEffect(() => {
     // Fetch API
     if (props.isQuizStarted) {
       fetch(getApi())
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(`HTTP error, status: ${res.status}`);
+        .then((response) => {
+          if (!response.ok) {
+            // Deal with common error 429 (Too Many Requests)
+            if (response.status === 429) {
+              throw new Error(
+                "Whoa! Looks like you've triggered requests too fast.\nPlease wait a moment and try again! 😊"
+              );
+            }
+            throw new Error(
+              `Something went wrong (error status: ${response.status}).\nPlease try again later.`
+            );
           }
-          return res.json();
+          return response.json();
         })
         .then((data) => {
           /// Initiate selectedAnswerIndex key to each question
@@ -49,12 +56,12 @@ export default function Quiz(props) {
           });
           setQuestions(updatedQuestions);
         })
-        .catch((err) => console.error("Fetch error:", err));
+        .catch((error) => {
+          setError(error);
+          console.error("Fetch error:", error);
+        });
     }
   }, [props.isQuizStarted]);
-
-  // DEBUG
-  console.log(questions);
 
   function selectAnswer(questionIndex, answerIndex) {
     setQuestions((prevQuestions) =>
@@ -128,22 +135,22 @@ export default function Quiz(props) {
     );
   });
 
-  return (
-    questions.length !== 0 && (
-      <section className="quiz">
-        {questionElements}
-        <footer>
-          {isGameOver && (
-            <p>
-              You scored {getNumberOfCorrectAnswers()}/{questions.length}{" "}
-              correct answers
-            </p>
-          )}
-          <button onClick={isGameOver ? newGame : finishGame}>
-            {isGameOver ? "New game" : "Check answers"}
-          </button>
-        </footer>
-      </section>
-    )
-  );
+  return questions.length !== 0 ? (
+    <section className="quiz">
+      {questionElements}
+      <footer>
+        {isGameOver && (
+          <p>
+            You scored {getNumberOfCorrectAnswers()}/{questions.length} correct
+            answers
+          </p>
+        )}
+        <button onClick={isGameOver ? newGame : finishGame}>
+          {isGameOver ? "New game" : "Check answers"}
+        </button>
+      </footer>
+    </section>
+  ) : error.length !== 0 ? (
+    <p className="error-message">{error.message}</p>
+  ) : null;
 }

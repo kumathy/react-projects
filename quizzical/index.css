@@ -178,6 +178,14 @@ select:hover {
   border-radius: 20px;
 }
 
+.error-message {
+  white-space: pre-line;
+  line-height: 2;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 /* 🧩 Quiz section */
 .quiz {
   width: 90%;
