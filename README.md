@@ -8,4 +8,4 @@ A simple digital business card.
 
 ## Quizzical
 
-An interactive trivia quiz app. [(Live demo)](https://your-quizzical-demo-link.com)
+An interactive trivia quiz app. [(Live demo)](https://quizzical-anhtran.netlify.app/)
