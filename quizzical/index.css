@@ -143,6 +143,7 @@ select:hover {
 /* Center everything on title screen only */
 .quizzical.title-screen {
   justify-content: center;
+  min-height: auto;
 }
 
 .quizzical-footer {
