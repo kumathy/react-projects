@@ -191,7 +191,8 @@ select:hover {
   gap: 15px;
 }
 
-.title > button {
+.title > button,
+.error > button {
   width: clamp(180px, 20vw, 250px);
   height: clamp(55px, 7vh, 70px);
   margin: 30px;
@@ -199,12 +200,22 @@ select:hover {
   border-radius: 20px;
 }
 
+.error > button {
+  margin: 5px;
+}
+
+.error {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .error-message {
   white-space: pre-line;
   line-height: 2;
   text-align: center;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 /* 🧩 Quiz section */

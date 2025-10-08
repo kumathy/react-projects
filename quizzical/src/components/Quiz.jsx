@@ -27,7 +27,7 @@ export default function Quiz(props) {
             // Deal with common error 429 (Too Many Requests)
             if (response.status === 429) {
               throw new Error(
-                "Whoa! Looks like you've triggered requests too fast.\nPlease wait a moment and try again! 😊"
+                "Whoa! Looks like you've triggered requests too fast!\nPlease wait a moment and try again. 😊"
               );
             }
             throw new Error(
@@ -151,6 +151,9 @@ export default function Quiz(props) {
       </footer>
     </section>
   ) : error.length !== 0 ? (
-    <p className="error-message">{error.message}</p>
+    <section className="error">
+      <p className="error-message">{error.message}</p>
+      <button onClick={newGame}>Go back</button>
+    </section>
   ) : null;
 }
