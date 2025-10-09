@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useWindowSize } from "react-use";
 import { decode } from "he";
 import { clsx } from "clsx";
@@ -8,6 +8,9 @@ export default function Quiz(props) {
   // Static values
   const NUMBER_OF_QUESTIONS = 5;
   const { width, height } = useWindowSize();
+
+  // Ref values
+  const bottomRef = useRef(null);
 
   // State values
   const [questions, setQuestions] = useState([]);
@@ -91,6 +94,13 @@ export default function Quiz(props) {
 
   function finishGame() {
     setIsGameOver(true);
+    setTimeout(() => {
+      const quizContainer = document.querySelector(".quizzical");
+      quizContainer?.scrollTo({
+        top: quizContainer.scrollHeight,
+        behavior: "smooth",
+      });
+    }, 100);
   }
 
   function newGame() {
@@ -179,6 +189,7 @@ export default function Quiz(props) {
         <button onClick={isGameOver ? newGame : finishGame}>
           {isGameOver ? "New game" : "Check answers"}
         </button>
+        <div ref={bottomRef}></div>
       </footer>
     </section>
   );
