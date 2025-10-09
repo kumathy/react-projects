@@ -4,25 +4,59 @@
 }
 
 :root {
-  --color-bg: #f5f7fb;
-  --color-primary: #4d5b9e;
-  --color-text: #293264;
-  --color-border: #dbdef0;
+  --background-color: #f5f7fb;
+  --primary-color: #4d5b9e;
+  --text-color: #293264;
+  --border-color: #ebebeb;
+  --break-color: #dbdef0;
+  --button-bg: rgba(0, 0, 0, 0);
+  --button-text: #f5f7fb;
+  --button-hover: #e9ecff;
+  --button-selected: #d6dbf5;
+  --button-correct: #94d7a2;
+  --button-incorrect: #f8bcbc;
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
+  --blob-1: url(/src/assets/blob1.svg);
+  --blob-2: url(/src/assets/blob2.svg);
+}
+
+[data-theme="dark"] {
+  --background-color: #1a1a2e;
+  --primary-color: #4d5b9e;
+  --text-color: #e0e0f0;
+  --border-color: #5c607c;
+  --break-color: #3b3b5a;
+  --button-bg: rgba(77, 91, 158, 0.15);
+  --button-text: #e0e0f0;
+  --button-hover: #2a2a4d;
+  --button-selected: #3a3a6a;
+  --button-correct: #3d8f5a;
+  --button-incorrect: #b34747;
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+  --blob-1: url(/src/assets/blob1_dark.svg);
+  --blob-2: url(/src/assets/blob2_dark.svg);
 }
 
 body {
-  min-height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Inter, sans-serif;
-  color: var(--color-text);
-  background-color: #ffffff;
-  background-image: radial-gradient(#4d5b9e 2px, #ffffff 2px);
+  color: var(--text-color);
+  background-color: var(--background-color); /* this will transition */
+  background-image: radial-gradient(#4d5b9e 2px, transparent 2px);
   background-size: 40px 40px;
   animation: backgroundmovement 3s linear infinite;
+  transition: background-color 0.25s ease-in-out; /* now works */
 }
 
 /* seamless movement */
@@ -45,8 +79,9 @@ p {
 }
 
 hr {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--break-color);
   margin-block: 10px;
+  transition: 0.25s ease-in-out;
 }
 
 /* 🔘 Buttons & Selects */
@@ -58,8 +93,8 @@ select {
 }
 
 button {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+  background-color: var(--primary-color);
+  color: var(--button-text);
   border: none;
 }
 
@@ -84,10 +119,10 @@ select {
   -moz-appearance: none;
   appearance: none;
 
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--primary-color);
   border-radius: 9px;
   background: none;
-  color: var(--color-text);
+  color: var(--text-color);
 
   outline: none;
   box-shadow: none;
@@ -99,10 +134,53 @@ select:hover {
   transform: scale(1.02);
 }
 
+.toggle-container {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+
+.toggle {
+  visibility: hidden;
+}
+
+.toggle + label {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.toggle + label::before {
+  content: "";
+  height: 1em;
+  width: 2em;
+  border-radius: 1em;
+  background-color: var(--toggle-bg);
+  margin-right: 0.5em;
+  transition: background-color 250ms ease-in-out;
+}
+
+.toggle + label::after {
+  content: "";
+  height: 0.8em;
+  width: 0.8em;
+  border-radius: 1em;
+  background-color: var(--toggle-fg);
+  position: absolute;
+  left: 0.2em;
+  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+.toggle:checked + label::after {
+  transform: translateX(100%);
+}
+
 /* 🎯 Main container */
 .quizzical {
-  width: min(90vw, 90vh, 870px);
-  height: min(90vw, 90vh, 870px);
+  width: min(80vw, 80vh, 870px);
+  height: min(80vw, 80vh, 870px);
   min-height: 70vmin;
   max-height: 90vh;
   display: flex;
@@ -110,21 +188,22 @@ select:hover {
   justify-content: flex-start; /* for quiz mode */
   align-items: center;
 
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  background-image: url(/src/assets/blobs.svg), url(/src/assets/blobs_2.svg);
+  background-color: var(--background-color);
+  background-image: var(--blob-1), var(--blob-2);
   background-repeat: no-repeat;
   background-position: right top, left bottom;
   background-size: 35% auto;
 
-  border: 10px solid #ebebeb;
+  border: 10px solid var(--border-color);
   border-radius: 15px;
   padding: 2rem;
   box-sizing: border-box;
 
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) var(--color-bg);
+  scrollbar-color: var(--primary-color) var(--background-color);
+
+  transition: 0.25s ease-in-out;
 }
 
 /* Optional smooth scrollbar styling */
@@ -132,11 +211,11 @@ select:hover {
   width: 8px;
 }
 .quizzical::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
+  background-color: var(--primary-color);
   border-radius: 10px;
 }
 .quizzical::-webkit-scrollbar-track {
-  background-color: var(--color-bg);
+  background-color: var(--background-color);
 }
 
 /* Center everything on title screen only */
@@ -156,7 +235,7 @@ select:hover {
 
 .github-link {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--text-color);
   display: inline-flex;
   align-items: center;
   gap: clamp(0.3rem, 0.8vw, 0.5rem);
@@ -267,28 +346,28 @@ select:hover {
   font-size: clamp(0.9rem, 1.8vw, 1rem);
   font-weight: 400;
 
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--primary-color);
   border-radius: 9px;
-  background: none;
-  color: var(--color-text);
+  background: var(--button-bg);
+  color: var(--text-color);
 }
 
 .quiz > section > div > button.answer:hover {
-  background: #e9ecff;
+  background: var(--button-hover);
 }
 
 .quiz > section > div > button.answer.selected {
-  background: #d6dbf5;
+  background: var(--button-selected);
   border: none;
 }
 
 .quiz > section > div > button.answer.correct {
-  background: #94d7a2;
+  background: var(--button-correct);
   border: none;
 }
 
 .quiz > section > div > button.answer.incorrect {
-  background: #f8bcbc;
+  background: var(--button-incorrect);
   border: none;
 }
 
