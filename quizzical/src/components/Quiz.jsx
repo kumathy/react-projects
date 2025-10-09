@@ -1,22 +1,24 @@
 import { useState, useEffect } from "react";
+import { useWindowSize } from "react-use";
 import { decode } from "he";
 import { clsx } from "clsx";
+import Confetti from "react-confetti";
 
 export default function Quiz(props) {
+  // Static values
   const NUMBER_OF_QUESTIONS = 5;
+  const { width, height } = useWindowSize();
+
+  // State values
   const [questions, setQuestions] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [error, setError] = useState("");
 
-  function getApi() {
-    const category = props.custom.category
-      ? `&category=${props.custom.category}`
-      : "";
-    const difficulty = props.custom.difficulty
-      ? `&difficulty=${props.custom.difficulty}`
-      : "";
-    return `https://opentdb.com/api.php?amount=${NUMBER_OF_QUESTIONS}${category}${difficulty}&type=multiple`;
-  }
+  // Derived values
+  const hasQuestions = questions.length > 0;
+  const hasError = error.length !== 0;
+  const correctAnswers = getNumberOfCorrectAnswers();
+  const allCorrect = hasQuestions && correctAnswers === NUMBER_OF_QUESTIONS;
 
   useEffect(() => {
     // Fetch API
@@ -62,6 +64,16 @@ export default function Quiz(props) {
         });
     }
   }, [props.isQuizStarted]);
+
+  function getApi() {
+    const category = props.custom.category
+      ? `&category=${props.custom.category}`
+      : "";
+    const difficulty = props.custom.difficulty
+      ? `&difficulty=${props.custom.difficulty}`
+      : "";
+    return `https://opentdb.com/api.php?amount=${NUMBER_OF_QUESTIONS}${category}${difficulty}&type=multiple`;
+  }
 
   function selectAnswer(questionIndex, answerIndex) {
     setQuestions((prevQuestions) =>
@@ -132,14 +144,36 @@ export default function Quiz(props) {
     );
   });
 
-  return questions.length !== 0 ? (
+  if (hasError) {
+    return (
+      <section className="error">
+        <p className="error-message">{error.message}</p>
+        <button onClick={newGame}>Go back</button>
+      </section>
+    );
+  }
+
+  if (!hasQuestions) {
+    return null;
+  }
+
+  return (
     <section className="quiz">
+      {allCorrect && isGameOver && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={1000}
+          recycle={false}
+          gravity={0.5}
+        />
+      )}
       {questionElements}
       <footer>
         {isGameOver && (
           <p>
-            You scored {getNumberOfCorrectAnswers()}/{questions.length} correct
-            answers
+            You scored {correctAnswers}/{questions.length} correct answers
+            {allCorrect && "! 🎉"}
           </p>
         )}
         <button onClick={isGameOver ? newGame : finishGame}>
@@ -147,10 +181,5 @@ export default function Quiz(props) {
         </button>
       </footer>
     </section>
-  ) : error.length !== 0 ? (
-    <section className="error">
-      <p className="error-message">{error.message}</p>
-      <button onClick={newGame}>Go back</button>
-    </section>
-  ) : null;
+  );
 }
