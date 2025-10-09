@@ -243,7 +243,6 @@ select:hover {
   width: 100%;
   margin-block: 8px;
   font-size: clamp(1rem, 2vw, 1.3rem);
-  text-align: center;
 }
 
 .quiz > section > div {
