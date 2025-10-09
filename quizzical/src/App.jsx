@@ -24,9 +24,7 @@ export default function App() {
   return (
     <main className="app" data-theme={isDark ? "dark" : "light"}>
       <div className="quizzical-container">
-        {!isQuizStarted && (
-          <Toggle isChecked={isDark} toggleDarkMode={toggleDarkMode} />
-        )}
+        <Toggle isChecked={isDark} toggleDarkMode={toggleDarkMode} />
         <div className={clsx("quizzical", isQuizStarted ? "" : "title-screen")}>
           {isQuizStarted ? (
             <Quiz
