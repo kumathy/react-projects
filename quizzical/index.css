@@ -159,8 +159,14 @@ select:hover {
   color: var(--color-text);
   display: inline-flex;
   align-items: center;
-  gap: clamp(0.25rem, 1vw, 0.75rem);
+  gap: clamp(0.3rem, 0.8vw, 0.5rem);
   font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.github-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1.2px;
+  text-underline-offset: 4px;
 }
 
 /* 🏠 Title screen */
