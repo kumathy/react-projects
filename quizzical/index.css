@@ -4,6 +4,7 @@
 }
 
 :root {
+  --background-color-outer: #ffffff;
   --background-color: #f5f7fb;
   --primary-color: #4d5b9e;
   --text-color: #293264;
@@ -23,6 +24,7 @@
 }
 
 [data-theme="dark"] {
+  --background-color-outer: #11111f;
   --background-color: #1a1a2e;
   --primary-color: #4d5b9e;
   --text-color: #e0e0f0;
@@ -54,11 +56,11 @@ body {
   align-items: center;
   font-family: Inter, sans-serif;
   color: var(--text-color);
-  background-color: var(--background-color); /* this will transition */
+  background-color: var(--background-color-outer);
   background-image: radial-gradient(#4d5b9e 2px, transparent 2px);
   background-size: 40px 40px;
   animation: backgroundmovement 3s linear infinite;
-  transition: background-color 0.25s ease-in-out; /* now works */
+  transition: background-color 0.25s ease-in-out;
 }
 
 /* seamless movement */
@@ -101,7 +103,6 @@ button {
 }
 
 button:hover:not(:disabled) {
-  opacity: 0.9;
   transform: scale(1.02);
 }
 
@@ -224,13 +225,16 @@ select:hover {
 /* Optional smooth scrollbar styling */
 .quizzical::-webkit-scrollbar {
   width: 8px;
+  transition: 0.25s ease-in-out;
 }
 .quizzical::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
   border-radius: 10px;
+  transition: 0.25s ease-in-out;
 }
 .quizzical::-webkit-scrollbar-track {
   background-color: var(--background-color);
+  transition: 0.25s ease-in-out;
 }
 
 /* Center everything on title screen only */
@@ -369,6 +373,10 @@ select:hover {
 
 .quiz > section > div > button.answer:hover {
   background: var(--button-hover);
+}
+
+.quiz > section > div > button.answer:hover:not(:disabled) {
+  opacity: 0.9;
 }
 
 .quiz > section > div > button.answer.selected {
