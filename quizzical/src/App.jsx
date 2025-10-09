@@ -23,21 +23,25 @@ export default function App() {
 
   return (
     <main className="app" data-theme={isDark ? "dark" : "light"}>
-      <Toggle isChecked={isDark} toggleDarkMode={toggleDarkMode} />
-      <div className={clsx("quizzical", isQuizStarted ? "" : "title-screen")}>
-        {isQuizStarted ? (
-          <Quiz
-            isQuizStarted={isQuizStarted}
-            setIsQuizStarted={setIsQuizStarted}
-            custom={custom}
-          />
-        ) : (
-          <Title
-            setIsQuizStarted={setIsQuizStarted}
-            custom={custom}
-            setCustom={setCustom}
-          ></Title>
+      <div className="quizzical-container">
+        {!isQuizStarted && (
+          <Toggle isChecked={isDark} toggleDarkMode={toggleDarkMode} />
         )}
+        <div className={clsx("quizzical", isQuizStarted ? "" : "title-screen")}>
+          {isQuizStarted ? (
+            <Quiz
+              isQuizStarted={isQuizStarted}
+              setIsQuizStarted={setIsQuizStarted}
+              custom={custom}
+            />
+          ) : (
+            <Title
+              setIsQuizStarted={setIsQuizStarted}
+              custom={custom}
+              setCustom={setCustom}
+            ></Title>
+          )}
+        </div>
       </div>
       {!isQuizStarted ? (
         <footer className="quizzical-footer">
