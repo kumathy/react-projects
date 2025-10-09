@@ -23,7 +23,6 @@ body {
   background-image: radial-gradient(#4d5b9e 2px, #ffffff 2px);
   background-size: 40px 40px;
   animation: backgroundmovement 3s linear infinite;
-  /* overflow: hidden; prevents scrolling on mobile */
 }
 
 /* seamless movement */

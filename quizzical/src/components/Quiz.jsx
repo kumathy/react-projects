@@ -107,23 +107,20 @@ export default function Quiz(props) {
         <h1>{decode(question.question)}</h1>
         <div>
           {question.allAnswers.map((answer, answerIndex) => {
+            const isSelected = answerIndex === question.selectedAnswerIndex;
+            const isCorrect = answer === question.correct_answer;
             const buttonClassName = clsx(
               "answer",
-              answerIndex === question.selectedAnswerIndex && "selected",
-              isGameOver && answer === question.correct_answer && "correct",
-              isGameOver &&
-                answerIndex === question.selectedAnswerIndex &&
-                answer !== question.correct_answer &&
-                "incorrect"
+              isSelected && "selected",
+              isGameOver && isCorrect && "correct",
+              isGameOver && isSelected && !isCorrect && "incorrect"
             );
             return (
               <button
                 className={buttonClassName}
                 key={answerIndex}
                 onClick={() => selectAnswer(questionIndex, answerIndex)}
-                disabled={
-                  isGameOver && answerIndex !== question.selectedAnswerIndex
-                }
+                disabled={isGameOver && !isSelected}
               >
                 {decode(answer)}
               </button>
