@@ -92,6 +92,12 @@ hr {
   transition: 0.25s ease-in-out;
 }
 
+svg {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
 /* 🔘 Buttons & Selects */
 button,
 select {
