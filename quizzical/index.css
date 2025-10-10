@@ -68,7 +68,6 @@ body {
   transition: background-color 0.25s ease-in-out;
 }
 
-/* seamless movement */
 @keyframes backgroundmovement {
   0% {
     background-position: 0 0;
@@ -98,7 +97,7 @@ button,
 select {
   font-family: Inter, sans-serif;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 button {
@@ -117,6 +116,16 @@ button:disabled {
 }
 
 /* 🧭 Select dropdowns */
+.select-container {
+  transition: all 0.2s ease-in-out;
+}
+
+.select-container:hover {
+  background: var(--button-hover);
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
 select {
   width: 200px;
   height: 50px;
@@ -129,17 +138,36 @@ select {
 
   border: 2px solid var(--primary-color);
   border-radius: 9px;
-  background: none;
+  background-color: transparent;
   color: var(--text-color);
 
   outline: none;
   box-shadow: none;
 }
 
-select:hover {
-  background: var(--button-hover);
-  opacity: 0.9;
-  transform: scale(1.02);
+select option {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+select::-webkit-scrollbar {
+  width: 6px;
+  border: none;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+select::-webkit-scrollbar-track {
+  background-color: var(--background-color);
+}
+
+/* Firefox support */
+select {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--background-color);
 }
 
 .toggle-container {
@@ -172,7 +200,7 @@ select:hover {
   border-radius: 1em;
   background-color: var(--toggle-bg);
   margin-right: 0.5em;
-  transition: 250ms ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 .toggle + label::after {
@@ -183,7 +211,7 @@ select:hover {
   background-color: var(--toggle-fg);
   position: absolute;
   left: 0.3em;
-  transition: 250ms ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 .toggle:checked + label::after {
@@ -227,7 +255,6 @@ select:hover {
   transition: 0.25s ease-in-out;
 }
 
-/* Optional smooth scrollbar styling */
 .quizzical::-webkit-scrollbar {
   width: 8px;
   transition: 0.25s ease-in-out;
@@ -304,7 +331,7 @@ select:hover {
 .error > button {
   width: clamp(180px, 20vw, 250px);
   height: clamp(55px, 7vh, 70px);
-  margin: 30px;
+  margin: 35px;
   font-size: clamp(1rem, 2vw, 1.3rem);
   border-radius: 20px;
 }
