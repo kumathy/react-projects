@@ -5,6 +5,7 @@
 
 :root {
   --background-color-outer: #ffffff;
+  --background-color-polka: #4d5b9e;
   --background-color: #f5f7fb;
   --primary-color: #4d5b9e;
   --text-color: #293264;
@@ -25,6 +26,7 @@
 
 [data-theme="dark"] {
   --background-color-outer: #11111f;
+  --background-color-polka: #4d5b9e;
   --background-color: #1a1a2e;
   --primary-color: #4d5b9e;
   --text-color: #e0e0f0;
@@ -57,7 +59,10 @@ body {
   font-family: Inter, sans-serif;
   color: var(--text-color);
   background-color: var(--background-color-outer);
-  background-image: radial-gradient(#4d5b9e 2px, transparent 2px);
+  background-image: radial-gradient(
+    var(--background-color-polka) 2px,
+    transparent 2px
+  );
   background-size: 40px 40px;
   animation: backgroundmovement 3s linear infinite;
   transition: background-color 0.25s ease-in-out;
@@ -132,7 +137,7 @@ select {
 }
 
 select:hover {
-  background: #e9ecff;
+  background: var(--button-hover);
   opacity: 0.9;
   transform: scale(1.02);
 }
