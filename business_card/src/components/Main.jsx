@@ -1,20 +1,20 @@
+import pfp from "../assets/pfp.jpg";
+
 export default function Main() {
   return (
     <main>
       <div className="info">
-        <img className="logo" src="./src/assets/pfp.jpg" />
+        <img className="logo" src={pfp} alt="Profile Picture" />
         <span className="title">
           <h1>Anh Tran</h1>
           <h2>Software Developer</h2>
           <h3>anhtran.website</h3>
         </span>
         <button className="btn-email">
-          {" "}
-          <i class="fa-solid fa-envelope"></i> Email
+          <i className="fa-solid fa-envelope"></i> Email
         </button>
         <button className="btn-linkedin">
-          {" "}
-          <i class="fa-brands fa-linkedin"></i> Linkedin
+          <i className="fa-brands fa-linkedin"></i> Linkedin
         </button>
 
         <span className="info-detail">
@@ -30,8 +30,7 @@ export default function Main() {
         <span className="info-detail">
           <h4>Interests</h4>
           <p>
-            {" "}
-            GF lover (I love my gf). Bouldering newbie. Gym goer. Music enjoyer.
+            GF lover (I love my gf). Bouldering noob. Gym goer. Music enjoyer.
             Fighting game button masher. Chess enthusiast. Home misser (sad
             face). Doom scroller. Elon #1 hater. Coffee fanatic.
           </p>
