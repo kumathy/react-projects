@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-import { useWindowSize } from "react-use";
 import { decode } from "he";
 import { clsx } from "clsx";
-import Confetti from "react-confetti";
 
 export default function Quiz(props) {
   // Static values
   const NUMBER_OF_QUESTIONS = 5;
-  const { width, height } = useWindowSize();
 
   // State values
   const [questions, setQuestions] = useState([]);
@@ -65,6 +62,12 @@ export default function Quiz(props) {
     }
   }, [props.isQuizStarted]);
 
+  useEffect(() => {
+    if (isGameOver) {
+      props.setIsWon(allCorrect);
+    }
+  }, [isGameOver, allCorrect]);
+
   function getApi() {
     const category = props.custom.category
       ? `&category=${props.custom.category}`
@@ -91,6 +94,8 @@ export default function Quiz(props) {
 
   function finishGame() {
     setIsGameOver(true);
+
+    // Scroll to bottom
     setTimeout(() => {
       const quizContainer = document.querySelector(".quizzical");
       quizContainer?.scrollTo({
@@ -102,6 +107,7 @@ export default function Quiz(props) {
 
   function newGame() {
     props.setIsQuizStarted(false);
+    setTimeout(() => props.setIsWon(false), 5500); // Let confetti animation finish
   }
 
   function getNumberOfCorrectAnswers() {
@@ -166,21 +172,12 @@ export default function Quiz(props) {
 
   return (
     <section className="quiz">
-      {allCorrect && isGameOver && (
-        <Confetti
-          width={width}
-          height={height}
-          numberOfPieces={1000}
-          recycle={false}
-          gravity={0.5}
-        />
-      )}
       {questionElements}
       <footer>
         {isGameOver && (
           <p>
             You scored {correctAnswers}/{questions.length} correct answers
-            {allCorrect && "! 🎉"}
+            {props.isWon && "! 🎉"}
           </p>
         )}
         <button onClick={isGameOver ? newGame : finishGame}>

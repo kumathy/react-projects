@@ -342,6 +342,11 @@ select {
   border-radius: 20px;
 }
 
+.title > button:hover,
+.error > button:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
+
 .error > button {
   margin: 5px;
 }
@@ -452,6 +457,10 @@ select {
   font-size: clamp(1rem, 2vw, 1.2rem);
   border-radius: 10px;
   margin: 10px;
+}
+
+.quiz > footer > button:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
 
 /* 📱 Responsive adjustments */
