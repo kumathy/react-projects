@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { clsx } from "clsx";
-import { FaGithub } from "react-icons/fa";
 import { useLocalStorage } from "react-use";
 import { useWindowSize } from "react-use";
+import { clsx } from "clsx";
+import { FaGithub } from "react-icons/fa";
 import Title from "./components/Title";
 import Quiz from "./components/Quiz";
 import Toggle from "./components/Toggle";
