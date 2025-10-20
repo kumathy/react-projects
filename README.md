@@ -19,7 +19,7 @@
 - [Component Library++](#component-library-)
 - [Running Locally](#running-locally-)
   - [Prerequisites](#prerequisites)
-  - [Installation Steps](#installation-steps)
+  - [Installation](#installation)
  
 ## Business Card 💼
 > 🚧 Work in progress...
