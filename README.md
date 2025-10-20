@@ -48,7 +48,7 @@ An interactive trivia quiz app. [(Live demo)](https://kumathy.github.io/react-pr
 - Node.js (v18 or higher)
 - npm
 
-### Installation Steps
+### Installation
 1. **Clone the repository**
 ```bash
    git clone https://github.com/kumathy/react-projects.git
