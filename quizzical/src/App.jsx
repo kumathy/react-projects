@@ -10,8 +10,9 @@ import Confetti from "react-confetti";
 
 export default function App() {
   const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [isDark, setIsDark] = useLocalStorage("isDark", preference);
   const { width, height } = useWindowSize();
+  const [isDark, setIsDark] = useLocalStorage("isDark", preference);
+
   const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [isWon, setIsWon] = useState(false);
   const [custom, setCustom] = useState({
@@ -21,7 +22,6 @@ export default function App() {
 
   function toggleDarkMode() {
     setIsDark(() => !isDark);
-    console.log(isDark);
   }
 
   return (

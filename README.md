@@ -19,7 +19,11 @@
 - [Component Library++](#component-library-)
 - [Running Locally](#running-locally-)
   - [Prerequisites](#prerequisites)
+<<<<<<< HEAD
   - [Installation Steps](#installation-steps)
+=======
+  - [Installation](#installation)
+>>>>>>> 88d50338ae46700a8ca1fc73078aa35368833acd
  
 ## Business Card 💼
 > 🚧 Work in progress...
@@ -48,6 +52,7 @@ An interactive trivia quiz app. [(Live demo)](https://kumathy.github.io/react-pr
 - Node.js (v18 or higher)
 - npm
 
+<<<<<<< HEAD
 ### Installation Steps
 1. **Clone the repository**
 ```bash
@@ -60,6 +65,19 @@ An interactive trivia quiz app. [(Live demo)](https://kumathy.github.io/react-pr
    cd quizzical
    # or
    cd business_card
+=======
+### Installation
+1. **Clone the repository**
+```bash
+   git clone https://github.com/kumathy/react-projects.git
+```
+
+2. **Navigate to a project folder**
+```bash
+   cd react-projects/<project_name>
+   # e.g.
+   cd react-projects/quizzical
+>>>>>>> 88d50338ae46700a8ca1fc73078aa35368833acd
 ```
 
 3. **Install dependencies**
