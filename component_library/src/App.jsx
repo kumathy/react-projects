@@ -1,4 +1,5 @@
 import Badge from "./components/Badge";
+import Banner from "./components/Banner";
 
 export default function App() {
   const colors = [
@@ -17,5 +18,9 @@ export default function App() {
     </Badge>
   ));
 
-  return <main>{badges}</main>;
+  return (
+    <main>
+      <div className="flex gap-2">{badges}</div>
+    </main>
+  );
 }
