@@ -12,64 +12,70 @@ export default function App() {
     "purple",
     "pink",
   ];
+
+  const bannerContents = [
+    {
+      status: "success",
+      title: "Congratulations!",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam.",
+    },
+    {
+      status: "warning",
+      title: "Attention",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam quo totam eius aperiam dolorum.",
+    },
+    {
+      status: "error",
+      title: "There is a problem with your application",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam quo totam eius aperiam dolorum.",
+    },
+    {
+      status: "neutral",
+      title: "Update available",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam.",
+    },
+    {
+      status: "success",
+      title: "Congratulations!",
+    },
+    {
+      status: "warning",
+      title: "Attention",
+    },
+    {
+      status: "error",
+      title: "There is a problem with your application",
+    },
+    {
+      status: "neutral",
+      title: "Update available",
+    },
+  ];
+
   const badges = colors.map((color) => (
     <Badge key={color} color={color} shape="pill">
       Badge
     </Badge>
   ));
 
+  const banners = bannerContents.map((banner, index) => (
+    <Banner key={index} status={banner.status}>
+      <Banner.Title>{banner.title}</Banner.Title>
+      {banner.text && <Banner.Text>{banner.text}</Banner.Text>}
+    </Banner>
+  ));
+
   return (
-    <main className="font-inter">
-      <div className="flex gap-2">{badges}</div>
-      <div className="flex flex-col gap-2">
-        <Banner status="success">
-          <Banner.Title>Congratulations!</Banner.Title>
-          <Banner.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            pariatur, ipsum similique veniam.
-          </Banner.Text>
-        </Banner>
+    <main className="font-inter flex flex-col gap-5">
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Badges</h2>
+        <div className="flex gap-2">{badges}</div>
+      </section>
 
-        <Banner status="warning">
-          <Banner.Title>Attention</Banner.Title>
-          <Banner.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            pariatur, ipsum similique veniam quo totam eius aperiam dolorum.
-          </Banner.Text>
-        </Banner>
-
-        <Banner status="error">
-          <Banner.Title>There is a problem with your application</Banner.Title>
-          <Banner.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            pariatur, ipsum similique veniam quo totam eius aperiam dolorum.
-          </Banner.Text>
-        </Banner>
-
-        <Banner status="neutral">
-          <Banner.Title>Update available</Banner.Title>
-          <Banner.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            pariatur, ipsum similique veniam.
-          </Banner.Text>
-        </Banner>
-
-        <Banner status="success">
-          <Banner.Title>Congratulations!</Banner.Title>
-        </Banner>
-
-        <Banner status="warning">
-          <Banner.Title>Attention</Banner.Title>
-        </Banner>
-
-        <Banner status="error">
-          <Banner.Title>There is a problem with you application</Banner.Title>
-        </Banner>
-
-        <Banner status="neutral">
-          <Banner.Title>Update available</Banner.Title>
-        </Banner>
-      </div>
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Banners</h2>
+        <div className="flex flex-col gap-4">{banners}</div>
+      </section>
     </main>
   );
 }

@@ -22,7 +22,7 @@ export default function Banner({ children, status = "neutral" }) {
   const icon = icons[status];
 
   return (
-    <div className={`w-4xl px-4 py-3 flex gap-3 rounded-md ${colorClass}`}>
+    <div className={`w-4xl px-4 py-3 flex gap-3 rounded-lg ${colorClass}`}>
       <div className="shrink-0 flex items-center h-6">{icon}</div>
       <div className="flex flex-col gap-1">{children}</div>
     </div>
