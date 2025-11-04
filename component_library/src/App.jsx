@@ -19,7 +19,7 @@ export default function App() {
   ));
 
   return (
-    <main>
+    <main className="font-inter">
       <div className="flex gap-2">{badges}</div>
       <div className="flex flex-col gap-2">
         <Banner status="success">
