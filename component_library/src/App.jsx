@@ -1,8 +1,9 @@
 import Badge from "./components/Badge";
 import Banner from "./components/Banner/index";
+import Card from "./components/Card";
 
 export default function App() {
-  const colors = [
+  const badgeColors = [
     "gray",
     "red",
     "yellow",
@@ -52,7 +53,7 @@ export default function App() {
     },
   ];
 
-  const badges = colors.map((color) => (
+  const badges = badgeColors.map((color) => (
     <Badge key={color} color={color} shape="pill">
       Badge
     </Badge>
@@ -75,6 +76,10 @@ export default function App() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Banners</h2>
         <div className="flex flex-col gap-4">{banners}</div>
+      </section>
+
+      <section>
+        <Card>Lorem Ispum</Card>
       </section>
     </main>
   );
