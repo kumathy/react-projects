@@ -68,7 +68,7 @@ export default function App() {
 
   return (
     <main className="font-inter overflow-x-hidden">
-      <div className="flex flex-col gap-5 px-4 py-6">
+      <div className="flex flex-col gap-10 px-4 py-6">
         <section>
           <h2 className="text-2xl font-semibold mb-4">Badges</h2>
           <div className="flex flex-wrap gap-2">{badges}</div>
@@ -80,7 +80,11 @@ export default function App() {
         </section>
 
         <section>
-          <Card>Lorem Ispum</Card>
+          <h2 className="text-2xl font-semibold mb-4">Card</h2>
+          <Card title="Easy Deployment">
+            Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et
+            magna sit morbi lobortis.
+          </Card>
         </section>
       </div>
     </main>
