@@ -67,20 +67,22 @@ export default function App() {
   ));
 
   return (
-    <main className="font-inter flex flex-col gap-5">
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Badges</h2>
-        <div className="flex gap-2">{badges}</div>
-      </section>
+    <main className="font-inter overflow-x-hidden">
+      <div className="flex flex-col gap-5 px-4 py-6">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Badges</h2>
+          <div className="flex flex-wrap gap-2">{badges}</div>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Banners</h2>
-        <div className="flex flex-col gap-4">{banners}</div>
-      </section>
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Banners</h2>
+          <div className="flex flex-col gap-4">{banners}</div>
+        </section>
 
-      <section>
-        <Card>Lorem Ispum</Card>
-      </section>
+        <section>
+          <Card>Lorem Ispum</Card>
+        </section>
+      </div>
     </main>
   );
 }
