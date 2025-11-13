@@ -17,7 +17,7 @@ const ICONS = {
   neutral: <FaCircleInfo className="text-blue-400" />,
 };
 
-export default function Banner({ children, status = "neutral" }) {
+export default function Banner({ children, status = "neutral", title }) {
   const colorClass = COLOR_CLASSES[status];
   const icon = ICONS[status];
 
@@ -26,7 +26,10 @@ export default function Banner({ children, status = "neutral" }) {
       className={`w-full md:max-w-5xl px-4 py-3 flex gap-3 rounded-lg ${colorClass}`}
     >
       <div className="shrink-0 flex items-center h-6">{icon}</div>
-      <div className="flex flex-col gap-1">{children}</div>
+      <div className="flex flex-col gap-1">
+        {title && <div className="font-semibold">{title}</div>}
+        {children}
+      </div>
     </div>
   );
 }

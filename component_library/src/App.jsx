@@ -1,5 +1,5 @@
 import Badge from "./components/Badge";
-import Banner from "./components/Banner/index";
+import Banner from "./components/Banner";
 import Card from "./components/Card";
 
 export default function App() {
@@ -60,9 +60,8 @@ export default function App() {
   ));
 
   const banners = bannerContents.map((banner, index) => (
-    <Banner key={index} status={banner.status}>
-      <Banner.Title>{banner.title}</Banner.Title>
-      {banner.text && <Banner.Text>{banner.text}</Banner.Text>}
+    <Banner key={index} status={banner.status} title={banner.title}>
+      {banner.text}
     </Banner>
   ));
 
